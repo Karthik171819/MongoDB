@@ -7,3 +7,9 @@ const exhbs = require('express-handlebars');
 app.engine('hbs', exhbs.engine());
 app.set('view engine', 'hbs');
 app.set('views', 'views');
+
+//create routing
+app.get('/', (req, res) =>{
+    let message = 'text';
+    res.render('main',{message});
+})

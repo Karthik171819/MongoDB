@@ -1,4 +1,4 @@
-const express = require('express');
+const express = require('express'); //express package
 const app = express();
 const bodyparser = require('body-parser');
 const exhbs = require('express-handlebars');

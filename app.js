@@ -32,6 +32,10 @@ app.get('/', async (req, res) =>{
             message = "Inserted successfully";
             break;
 
+        case '2':
+            message = "updated successsfully";
+            break;
+
         default:
             break;
     }
@@ -45,6 +49,17 @@ app.post('/store_book', async(req, res) => {
     let book = {title: req.body.title, author: req.body.author} 
     await collection.insertOne(book);
     return res.redirect('/?status=1');
+
+
+})
+
+app.post('/update_book/:edit_id', async(req, res) => {
+    let database = await dbo.getDatabase();
+    const collection = database.collection('books');
+    let book = {title: req.body.title, author: req.body.author}
+    let edit_id = req.params.edit_id; 
+    await collection.updateOne({_id:new ObjectID(edit_id)}, {$set:book});
+    return res.redirect('/?status=2');
 
 
 })

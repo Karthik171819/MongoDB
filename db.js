@@ -17,9 +17,14 @@ async function getDatabase() {
     // }
     // return database; -r for mongodb
     mongoose.connect('mongodb://127.0.0.1:27017/library')
+    .then(() => {
+        console.log("Database connected");
+    }).catch(() => {
+        console.log("Databse connection error");
+    })
 }
 
 module.exports = {
     getDatabase,
-    ObjectID
+    //ObjectID -r for mongodb
 }

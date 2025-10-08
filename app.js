@@ -21,10 +21,17 @@ app.get('/', async (req, res) =>{
 
     let message = '';
     let edit_id, edit_book;
-
+    
+    //editing 
     if(req.query.edit_id){
         edit_id = req.query.edit_id;
         edit_book = await  collection.findOne({_id:  new ObjectID(edit_id)}) //binary work behind mongodb
+    }
+
+    //deleting
+    if(req.query.delete_id){
+        await collection.deleteOne({_id: new ObjectID(req.query.delete_id)});
+        return res.redirect('/?status=3');
     }
 
     switch(req.query.status){
@@ -34,6 +41,10 @@ app.get('/', async (req, res) =>{
 
         case '2':
             message = "updated successsfully";
+            break;
+
+        case '3':
+            message = "Deleted Successfully";
             break;
 
         default:

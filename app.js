@@ -1,3 +1,4 @@
+//mongoose connection
 const express = require('express'); //express package
 const app = express();
 const bodyparser = require('body-parser');

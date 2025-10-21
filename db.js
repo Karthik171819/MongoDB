@@ -16,11 +16,11 @@ async function getDatabase() {
     //     console.log("Dtabase not connected");
     // }
     // return database; -r for mongodb
-    mongoose.connect('mongodb://127.0.0.1:27017/library')
+    mongoose.connect('mongodb+srv://karthik:Test123@cluster0.j9l3ucp.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0')
     .then(() => {
         console.log("Database connected");
-    }).catch(() => {
-        console.log("Databse connection error");
+    }).catch((err) => {
+        console.log("Databse connection error", err);
     })
 }
 
